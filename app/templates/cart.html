@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Cart</title>
+</head>
+<body>
+    <h1>Your Shopping Cart</h1>
+    <a href="{{ url_for('main.home') }}">← Back to Shop</a>
+    <hr>
+    <form method="POST" action="{{ url_for('main.pay') }}">
+        {% for product in products %}
+            <div>
+                <h2>{{ product.name }}</h2>
+                <p>₹{{ product.price }} × {{ cart[product.id|string] }}</p>
+                <form action="{{ url_for('main.update_cart', product_id=product.id) }}" method="POST">
+                    Quantity:
+                    <input type="number" name="quantity" value="{{ cart[product.id|string] }}">
+                    <button type="submit">Update</button>
+                </form>
+            </div>
+            <hr>
+        {% endfor %}
+        <h3>Total: ₹{{ total }}</h3>
+        <button type="submit">Proceed to Pay</button>
+    </form>
+</body>
+</html>

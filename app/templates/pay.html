@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pay Now</title>
+</head>
+<body>
+    <h1>Pay with Razorpay</h1>
+    <form>
+        <script
+            src="https://checkout.razorpay.com/v1/checkout.js"
+            data-key="YOUR_RAZORPAY_KEY"
+            data-amount="{{ payment.amount }}"
+            data-currency="INR"
+            data-order_id="{{ payment.id }}"
+            data-buttontext="Pay Now"
+            data-name="Kate Beauty"
+            data-description="Makeup Products"
+            data-theme.color="#F37254">
+        </script>
+    </form>
+</body>
+</html>
